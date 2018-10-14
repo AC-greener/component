@@ -1,0 +1,23 @@
+{
+  "name": "vue-component",
+  "version": "0.0.1",
+  "description": "一个用vue做的UI组件库",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AC-greener/component.git"
+  },
+  "keywords": [
+    "vue",
+    "ui"
+  ],
+  "author": "zhutongtong",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AC-greener/component/issues"
+  },
+  "homepage": "https://github.com/AC-greener/component#readme"
+}
