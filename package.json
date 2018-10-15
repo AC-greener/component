@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/AC-greener/component/issues"
   },
-  "homepage": "https://github.com/AC-greener/component#readme"
+  "homepage": "https://github.com/AC-greener/component#readme",
+  "dependencies": {
+    "vue": "^2.5.17"
+  }
 }
