@@ -29,25 +29,27 @@
     }
   </style>
   <style>
-    .icon {
-      width: 1em;
-      height: 1em;
-    }
+  
   </style>
 </head>
 <body>
   <div id="app">
+    <g-button icon='settings' :loading="loading1" @click="loading1 = !loading1">
+      按钮
+    </g-button>
+    <g-button icon='download' icon-position='right'>
+      按钮
+    </g-button>
     <g-button icon='good'>
-      hello JS
+      按钮
     </g-button>
-    <g-button icon='good' icon-position='right'>
-        hello JS
-    </g-button>
-    <g-button icon='good' icon-position='up'>
-          hello JS
-    </g-button>
+    <g-button-group>
+      <g-button icon='left'>上一页</g-button>
+      <g-button >按钮</g-button>
+      <g-button icon='right' icon-position='right'>下一页</g-button>
+    </g-button-group>
   </div>  
     <script src="./src/app.js"></script>
-    <script src="//at.alicdn.com/t/font_874200_lfb7nbhhv78.js"></script>
+    <script src="//at.alicdn.com/t/font_874200_j6pk4r7cyc.js"></script>
 </body>
 </html>
