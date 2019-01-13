@@ -60,9 +60,9 @@ export default {
       return [
         span && `col-${span}`,
         offset && `offset-${offset}`,
-        ...(phone && [`col-phone-${phone.span}`]),
-        ...(ipad && [`col-ipad-${ipad.span}`]),
-        ...(pc && [`col-pc-${pc.span}`])
+        ...(phone?  [`col-phone-${phone.span}`] : []),
+        ...(ipad ? [`col-ipad-${ipad.span}`] : []),
+        ...(pc ? [`col-pc-${pc.span}`] : [])
       ]
     }
   }
