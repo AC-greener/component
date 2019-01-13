@@ -1,7 +1,7 @@
 <template>
   <div class="col" 
-    :class="[`col-${span}`, `offset-${offset}`]"
-    :style="{paddingLeft: 20/2+'px', paddingRight: 20/2+'px'}"
+    :class="[span && `col-${span}`, offset && `offset-${offset}`]"
+    :style="{paddingLeft: gutter/2+'px', paddingRight: gutter/2+'px'}"
   >
      <div style="border: 1px solid green; height: 100px;">
       <slot></slot>
@@ -37,10 +37,8 @@ export default {
 <style lang="scss" scoped>
   .col {
     height: 100px;
-    background: grey;
+    // background: grey;
     width: 50%;
-    border: 1px solid red;
-
     $class-prefix: col-;
     @for $n from 1 through 24 {
       &.#{$class-prefix}#{$n} {
