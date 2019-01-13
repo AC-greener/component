@@ -1,5 +1,5 @@
 <template>
-  <div class="row" :style="{marginLeft: -gutter/2+'px', marginRight: -gutter/2+'px'}">
+  <div class="row" :style="rowStyle">
     <slot></slot>
   </div>
 </template>
@@ -11,8 +11,16 @@ export default {
       type: [String, Number]
     }
   },
+  computed: {
+    rowStyle() {
+      return {
+        marginLeft: -this.gutter / 2 + "px",
+        marginRight: -this.gutter / 2 + "px"
+      };
+    }
+  },
   created() {
-    console.log('gutter:', this.gutter)
+    console.log("gutter:", this.gutter);
   },
   mounted() {
     console.log(this.$children);
@@ -23,18 +31,17 @@ export default {
   }
 };
 
-var div = document.createElement('div')   //created
-var childDiv = document.createElement('div')  //child created
-div.appendChild(childDiv)  //child mounted
-document.body.appendChild(childDiv)  //mounted
-
+var div = document.createElement("div"); //created
+var childDiv = document.createElement("div"); //child created
+div.appendChild(childDiv); //child mounted
+document.body.appendChild(childDiv); //mounted
 </script>
 
 <style scope lang="scss">
 .row {
   display: flex;
   //默认为nowrap
-  flex-wrap: nowrap;  
+  flex-wrap: nowrap;
   // margin: 0 -10px;   //抵消col产生的padding
 }
 </style>
