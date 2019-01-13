@@ -51,11 +51,11 @@
 
     <!-- grid -->
     <div style="border: 3px solid black">
-      <g-row gutter='20'>
+      <!-- <g-row gutter='20'>
         <g-col span='4' >1</g-col>
         <g-col span='20' >2</g-col>
-      </g-row>
-      <g-row  align="left">
+      </g-row> -->
+      <!-- <g-row  align="left">
         <g-col span='4'>1</g-col>
         <g-col span='4'>2</g-col>
         <g-col span='4'>3</g-col>
@@ -69,21 +69,17 @@
         <g-col>2</g-col>
         <g-col>3</g-col>
         <g-col>4</g-col>
-      </g-row>
+      </g-row> -->
       <!-- <g-row gutter="20">
         <g-col :span="2">1</g-col>  //数字2  
         <g-col span="20" offset="2">11</g-col> //字符串20
       </g-row> -->
-      <g-row gutter="20">
-        <g-col span="4">1</g-col>
-        <g-col span="20">11</g-col>
+      <g-row >
+        <g-col span="2" :phone="{span:12}" :pc="{span: 8}" :ipad="{span: 10}">2</g-col>
+        <g-col span="20"  :phone="{span:12, offset:0}" :pc="{span: 16}"  :ipad="{span: 14}">20</g-col>
       </g-row>
      
-      <g-row gutter="20">
-        <g-col span="4">1</g-col>
-        <g-col span="4" >11</g-col>
-        <g-col span="8" offset="8">11</g-col>
-      </g-row>
+   
     </div>
   </div>  
     <script src="./src/app.js"></script>

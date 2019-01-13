@@ -28,11 +28,7 @@ export default {
       return [this.align && `align-${this.align}`]
     }
   },
-  created() {
-    console.log("gutter:", this.gutter);
-  },
   mounted() {
-    console.log(this.$children);
     //吧gutter传递给每个孩子
     this.$children.forEach(vm => {
       vm.gutter = this.gutter;

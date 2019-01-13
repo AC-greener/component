@@ -1,9 +1,5 @@
 <template>
-  <div
-    class="col"
-    :class="colClass"
-    :style="colStyle"
-  >
+  <div class="col" :class="colClass" :style="colStyle">
     <div style="border: 1px solid green; height: 100px;">
       <slot></slot>
     </div>
@@ -11,6 +7,17 @@
 </template>
 
 <script>
+let validator = (value) => {
+  let keys = Object.keys(value);
+  let valid = true;
+  //判断传递的数据是否合法
+  keys.forEach(item => {
+    if (!["span", "offset"].includes(item)) {
+      valid = false;
+    }
+  });
+  return valid;
+};
 export default {
   name: "GuLuCol",
   props: {
@@ -19,6 +26,18 @@ export default {
     },
     offset: {
       type: [String, Number]
+    },
+    phone: {
+      type: Object,
+      validator,
+    },
+    ipad: {
+      type: Object,
+      validator,
+    },
+    pc: {
+      type: Object,
+      validator,
     }
   },
   data() {
@@ -31,15 +50,21 @@ export default {
     //一个属性根据另外一个属性变的时候用computed
     colStyle() {
       return {
-        paddingLeft: this.gutter/2+'px', 
-        paddingRight: this.gutter/2+'px'
-      }
+        paddingLeft: this.gutter / 2 + "px",
+        paddingRight: this.gutter / 2 + "px"
+      };
     },
     colClass() {
-      return 
-        [this.span && `col-${this.span}`, this.offset && `offset-${this.offset}`]
-      
-    },
+      let { span, offset, phone, ipad, pc } = this;
+      console.log(ipad)
+      return [
+        span && `col-${span}`,
+        offset && `offset-${offset}`,
+        ...(phone && [`col-phone-${phone.span}`]),
+        ...(ipad && [`col-ipad-${ipad.span}`]),
+        ...(pc && [`col-pc-${pc.span}`])
+      ]
+    }
   }
 };
 </script>
@@ -59,6 +84,48 @@ export default {
   @for $n from 1 through 24 {
     &.#{$class-prefix}#{$n} {
       margin-left: ($n / 24) * 100%;
+    }
+  }
+  @media (max-width: 576px) {
+    $class-prefix: col-phone-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n / 24) * 100%;
+      }
+    }
+    $class-prefix: offset-phone-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: ($n / 24) * 100%;
+      }
+    }
+  }
+  @media (min-width: 577px) and (max-width: 992px) {
+    $class-prefix: col-ipad-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n / 24) * 100%;
+      }
+    }
+    $class-prefix: offset-ipad-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: ($n / 24) * 100%;
+      }
+    }
+  }
+  @media (min-width: 993px) and (max-width: 1200px) {
+    $class-prefix: col-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        width: ($n / 24) * 100%;
+      }
+    }
+    $class-prefix: offset-pc-;
+    @for $n from 1 through 24 {
+      &.#{$class-prefix}#{$n} {
+        margin-left: ($n / 24) * 100%;
+      }
     }
   }
 }
