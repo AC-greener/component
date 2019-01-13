@@ -1,5 +1,5 @@
 <template>
-  <div class="row" :style="rowStyle">
+  <div class="row" :style="rowStyle" :class="rowClass">
     <slot></slot>
   </div>
 </template>
@@ -9,6 +9,12 @@ export default {
   props: {
     gutter: {
       type: [String, Number]
+    },
+    align: {
+      type: String,
+      validator(value) {
+        return ['left', 'center', 'right'].includes(value)
+      }
     }
   },
   computed: {
@@ -17,6 +23,9 @@ export default {
         marginLeft: -this.gutter / 2 + "px",
         marginRight: -this.gutter / 2 + "px"
       };
+    },
+    rowClass() {
+      return [this.align && `align-${this.align}`]
     }
   },
   created() {
@@ -43,5 +52,14 @@ document.body.appendChild(childDiv); //mounted
   //默认为nowrap
   flex-wrap: nowrap;
   // margin: 0 -10px;   //抵消col产生的padding
+    &.align-left {
+      justify-content: flex-start;
+    }
+    &.align-right {
+      justify-content: flex-end;
+    }
+    &.align-center {
+      justify-content: center;
+    }
 }
 </style>
